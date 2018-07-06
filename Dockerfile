@@ -1,8 +1,13 @@
 FROM perl:5.20.2
 
-RUN cpanm Carton
+RUN apt-get update && apt-get install -y \
+  watch
 
-WORKDIR /usr
+RUN cpanm Carton && mkdir -p /usr/install
 
-COPY cpanfile /usr
+WORKDIR /usr/install
+
+COPY cpanfile /usr/install
 RUN carton install
+
+ENV PERL5LIB /usr/install/local/lib/perl5:/usr/working/lib:/usr/working/backend-tests
