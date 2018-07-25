@@ -1,3 +1,4 @@
+requires 'Test::MockModule';
 requires 'Test::Spec';
 requires 'Jasmine::Spy';
 requires 'JSON';
