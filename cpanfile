@@ -1,3 +1,4 @@
+requires 'DBI';
 requires 'Test::MockModule';
 requires 'Test::Spec';
 requires 'Jasmine::Spy';
