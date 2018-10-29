@@ -1,7 +1,13 @@
 requires 'Test::MockObject';
 requires 'Test::MockModule';
+requires 'Test::MockTime';
 requires 'Test::Spec';
+requires 'Data::GUID';
 requires 'Jasmine::Spy';
 requires 'JSON';
 requires 'Template';
 requires 'List::MoreUtils';
+requires 'Crypt::OpenSSL::RSA';
+requires 'MIME::Base64::URLSafe';
+requires 'Time::Piece';
+requires 'File::Slurp';
