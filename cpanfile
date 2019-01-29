@@ -1,3 +1,4 @@
+requires 'Test::Exception';
 requires 'Test::MockObject';
 requires 'Test::MockModule';
 requires 'Test::MockTime';
@@ -11,3 +12,4 @@ requires 'Crypt::OpenSSL::RSA';
 requires 'MIME::Base64::URLSafe';
 requires 'Time::Piece';
 requires 'File::Slurp';
+requires 'Devel::Cover';
