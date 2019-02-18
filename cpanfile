@@ -13,3 +13,5 @@ requires 'MIME::Base64::URLSafe';
 requires 'Time::Piece';
 requires 'File::Slurp';
 requires 'Devel::Cover';
+requires 'DBI';
+requires 'DBD::Pg';
