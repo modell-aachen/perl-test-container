@@ -10,4 +10,4 @@ WORKDIR /usr/install
 COPY cpanfile /usr/install
 RUN carton install
 
-ENV PERL5LIB /usr/install/local/lib/perl5:/usr/working/lib:/usr/working/backend-tests
+ENV PERL5LIB /usr/install/local/lib/perl5:/usr/working/lib:/usr/working/backend-tests:/usr/working/lib:/usr/working/integration-tests
