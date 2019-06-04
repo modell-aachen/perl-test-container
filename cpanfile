@@ -16,3 +16,4 @@ requires 'Devel::Cover';
 requires 'DBI';
 requires 'DBD::Pg';
 requires 'Test::Deep';
+requires 'HTML::Scrubber';
