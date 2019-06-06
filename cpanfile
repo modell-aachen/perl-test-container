@@ -17,3 +17,4 @@ requires 'DBI';
 requires 'DBD::Pg';
 requires 'Test::Deep';
 requires 'HTML::Scrubber';
+requires 'CGI';
