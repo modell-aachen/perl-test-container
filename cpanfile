@@ -18,3 +18,6 @@ requires 'DBD::Pg';
 requires 'Test::Deep';
 requires 'HTML::Scrubber';
 requires 'CGI';
+requires 'CGI::Session';
+requires 'Crypt::PasswdMD5';
+requires 'File::Copy::Recursive';
