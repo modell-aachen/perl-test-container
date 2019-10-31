@@ -6,7 +6,11 @@ RUN apt-get update && apt-get install -y \
   netcat\
   watch
 
-RUN cpanm Carton && mkdir -p /usr/install
+RUN cpanm Carton \
+  Minion \
+  Mojo::Pg
+
+RUN mkdir -p /usr/install
 
 WORKDIR /usr/install
 
