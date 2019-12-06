@@ -1,5 +1,7 @@
 FROM perl:5.20.2
 
+ARG GIT_VERSION=2.24.0-rc2
+
 RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
   libcarp-always-perl\
@@ -15,11 +17,11 @@ RUN mkdir -p /usr/install
 
 WORKDIR /usr/install
 
-COPY git-2.24.0-rc2.tar.gz /usr/install
+COPY git-${GIT_VERSION}.tar.gz /usr/install
 
 # evil hack because github doesn't like outdated git versions because whysoever
-RUN tar -zxf git-2.24.0-rc2.tar.gz &&\
-  cd git-2.24.0-rc2 &&\
+RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
+  cd git-$GIT_VERSION &&\
   make configure &&\
   ./configure --prefix=/usr &&\
   make install
