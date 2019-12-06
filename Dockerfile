@@ -1,10 +1,14 @@
+# The perl version we use is the lowest version we support, i.e. the version deployed on RHEL Systems
 FROM perl:5.20.2
+
+ARG GIT_VERSION=2.24.0-rc2
 
 RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
   libcarp-always-perl\
   netcat\
-  watch
+  watch\
+  gettext
 
 RUN cpanm Carton \
   Minion \
@@ -13,6 +17,15 @@ RUN cpanm Carton \
 RUN mkdir -p /usr/install
 
 WORKDIR /usr/install
+
+COPY git-${GIT_VERSION}.tar.gz /usr/install
+
+# install a newer version of git to work with action/checkout in github actions
+RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
+  cd git-$GIT_VERSION &&\
+  make configure &&\
+  ./configure --prefix=/usr &&\
+  make install
 
 COPY cpanfile /usr/install
 RUN carton install
