@@ -1,3 +1,4 @@
+# The perl version we use is the lowest version we support, i.e. the version deployed on RHEL Systems
 FROM perl:5.20.2
 
 ARG GIT_VERSION=2.24.0-rc2
@@ -19,7 +20,7 @@ WORKDIR /usr/install
 
 COPY git-${GIT_VERSION}.tar.gz /usr/install
 
-# evil hack because github doesn't like outdated git versions because whysoever
+# install a newer version of git to work with action/checkout in github actions
 RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
   cd git-$GIT_VERSION &&\
   make configure &&\
