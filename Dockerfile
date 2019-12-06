@@ -4,7 +4,8 @@ RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://ar
 RUN apt-get update && apt-get install -y \
   libcarp-always-perl\
   netcat\
-  watch
+  watch\
+  gettext
 
 RUN cpanm Carton \
   Minion \
@@ -13,6 +14,15 @@ RUN cpanm Carton \
 RUN mkdir -p /usr/install
 
 WORKDIR /usr/install
+
+COPY git-2.24.0-rc2.tar.gz /usr/install
+
+# evil hack because github doesn't like outdated git versions because whysoever
+RUN tar -zxf git-2.24.0-rc2.tar.gz &&\
+  cd git-2.24.0-rc2 &&\
+  make configure &&\
+  ./configure --prefix=/usr &&\
+  make install
 
 COPY cpanfile /usr/install
 RUN carton install
