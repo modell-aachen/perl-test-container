@@ -22,3 +22,4 @@ requires 'CGI::Session';
 requires 'Crypt::PasswdMD5';
 requires 'File::Copy::Recursive';
 requires 'Redis';
+requires 'Array::Utils';
