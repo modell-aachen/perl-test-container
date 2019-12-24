@@ -6,6 +6,7 @@ requires 'Test::Spec';
 requires 'Data::GUID';
 requires 'Jasmine::Spy';
 requires 'JSON';
+requires 'JSON::MaybeXS';
 requires 'Template';
 requires 'List::MoreUtils';
 requires 'Crypt::OpenSSL::RSA';
