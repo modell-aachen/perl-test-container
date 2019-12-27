@@ -30,4 +30,6 @@ RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
 COPY cpanfile /usr/install
 RUN carton install
 
+WORKDIR /usr/working
+
 ENV PERL5LIB /usr/install/local/lib/perl5:/usr/share/perl5/5.20:/usr/share/perl5:/usr/working/lib:/usr/working/backend-tests:/usr/working/lib:/usr/working/integration-tests:/usr/lib/x86_64-linux-gnu/perl5/5.20
