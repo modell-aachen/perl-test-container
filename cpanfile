@@ -16,6 +16,7 @@ requires 'JSON';
 requires 'List::MoreUtils';
 requires 'MIME::Base64::URLSafe';
 requires 'Redis';
+requires 'String::Random';
 requires 'Template';
 requires 'Test::Deep';
 requires 'Test::Exception';
