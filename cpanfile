@@ -37,3 +37,4 @@ requires 'Text::Unidecode';
 requires 'Time::Piece';
 requires 'Types::Standard';
 requires 'XML::Easy::Element';
+requires 'Email::Valid';
