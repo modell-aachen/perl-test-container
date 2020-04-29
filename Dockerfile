@@ -4,7 +4,7 @@ FROM perl:5.20.2
 ARG GIT_VERSION=2.24.0-rc2
 
 RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --force-yes \
   libcarp-always-perl\
   netcat\
   watch\
