@@ -1,3 +1,4 @@
+requires 'Algorithm::Diff';
 requires 'Array::Utils';
 requires 'CGI';
 requires 'CGI::Session';
