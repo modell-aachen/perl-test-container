@@ -3,20 +3,15 @@ FROM perl:5.20.2
 
 ARG GIT_VERSION=2.24.0-rc2
 
-RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
-RUN apt-get update && apt-get install -y --force-yes \
-  libcarp-always-perl\
-  netcat\
-  watch\
-  gettext
-
-RUN cpanm Carton
-
 RUN mkdir -p /usr/install
-
 WORKDIR /usr/install
 
+COPY aptfile /usr/install
+COPY cpanfile /usr/install
 COPY git-${GIT_VERSION}.tar.gz /usr/install
+
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
+RUN apt-get update && xargs -a aptfile apt-get install -y --force-yes
 
 # install a newer version of git to work with action/checkout in github actions
 RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
@@ -25,9 +20,8 @@ RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
   ./configure --prefix=/usr &&\
   make install
 
-COPY cpanfile /usr/install
+RUN cpanm Carton
 RUN carton install
 
 WORKDIR /usr/working
-
 ENV PERL5LIB /usr/install/local/lib/perl5:/usr/share/perl5/5.20:/usr/share/perl5:/usr/working/lib:/usr/working/backend-tests:/usr/working/lib:/usr/working/integration-tests:/usr/lib/x86_64-linux-gnu/perl5/5.20
