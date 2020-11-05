@@ -18,6 +18,7 @@ requires 'File::Slurp';
 requires 'HTML::Scrubber';
 requires 'Jasmine::Spy';
 requires 'JSON::MaybeXS';
+requires 'JSON::WebToken';
 requires 'JSON::XS';
 requires 'JSON';
 requires 'List::MoreUtils';
