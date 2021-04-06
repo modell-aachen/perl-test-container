@@ -8,6 +8,7 @@ requires 'Crypt::PasswdMD5';
 requires 'Data::GUID';
 requires 'Data::Page';
 requires 'Data::Pageset';
+requires 'DateTime';
 requires 'DBD::Pg';
 requires 'DBI';
 requires 'Devel::Cover';
