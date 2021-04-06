@@ -9,6 +9,7 @@ requires 'Data::GUID';
 requires 'Data::Page';
 requires 'Data::Pageset';
 requires 'DateTime';
+requires 'DateTime::Format::ISO8601';
 requires 'DBD::Pg';
 requires 'DBI';
 requires 'Devel::Cover';
