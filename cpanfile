@@ -46,3 +46,4 @@ requires 'Time::Piece';
 requires 'Types::Standard';
 requires 'XML::Easy::Element';
 requires 'XML::LibXML';
+requires 'Locale::Maketext::Lexicon';
