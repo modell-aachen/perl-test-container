@@ -23,5 +23,9 @@ RUN tar -zxf git-$GIT_VERSION.tar.gz &&\
 RUN cpanm Carton
 RUN carton install
 
+COPY wait-for-pg /usr/local/bin/wait-for-pg
+
 WORKDIR /usr/working
 ENV PERL5LIB /usr/install/local/lib/perl5:/usr/share/perl5/5.20:/usr/share/perl5:/usr/working/lib:/usr/working/backend-tests:/usr/working/lib:/usr/working/integration-tests:/usr/lib/x86_64-linux-gnu/perl5/5.20
+
+ENTRYPOINT ["bash", "-c", "wait-for-pg $POSTGRES_HOST:$POSTGRES_PORT --"]
